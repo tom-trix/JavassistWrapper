@@ -8,12 +8,12 @@ import ru.tomtrix.javassistwraper.ClassStore;
 public class Tester
 {
 	/** Look through this simple example to undestand how perfect the Javassist works
-	 * @param args
+	 * @param args command line arguments
 	 * @throws Exception */
 	public static void main(String[] args) throws Exception
 	{
 		// Let's create a new class that contains fields x and y (and also method getSum())
-		ClassStore.getInstance().addClass("Point", Arrays.asList(new String[] { "int x=1;", "int y=2;" }), Arrays.asList(new String[] { "public int getSum() {return x+y;}" }));
+		ClassStore.getInstance().addClass("Point", Arrays.asList("int x=1;", "int y=2;"), Arrays.asList("public int getSum() {return x+y;}"));
 
 		// Of course, you can add new fields and methods afterwards
 		ClassStore.getInstance().addField("Point", "int dif=0;");
@@ -35,7 +35,7 @@ public class Tester
 		}
 
 		// However, we could create a new class that enhances the previous one with new fields and methods
-		ClassStore.getInstance().addClass("3DPoint", "Point", Arrays.asList(new String[] { "int z=5;" }), Arrays.asList(new String[] { "public int getFullSum() {return x+y+z;}" }));
+		ClassStore.getInstance().addClass("3DPoint", "Point", Arrays.asList("int z=5;"), Arrays.asList("public int getFullSum() {return x+y+z;}"));
 
 		// Now compile the new class and see what we have eventually got
 		r = ClassStore.getInstance().compile("3DPoint");

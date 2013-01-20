@@ -6,6 +6,7 @@ import java.util.*;
 
 /** This class is a simple wrapper for a powerful Java ASM/Bytecode Library "Javassist"
  * @author tom-trix */
+@SuppressWarnings("unused")
 public class ClassStore
 {
 	/** Singleton instance */
@@ -152,7 +153,7 @@ public class ClassStore
 		if (clazz == null) throw new NullPointerException(NO_SUCH_CLASS);
 		List<String> result = new ArrayList<>();
 		for (CtField c : clazz.getDeclaredFields())
-			result.add(c.toString());
+			result.add(c.getName());
 		return result;
 	}
 
@@ -164,7 +165,7 @@ public class ClassStore
 		if (clazz == null) throw new NullPointerException(NO_SUCH_CLASS);
 		List<String> result = new ArrayList<>();
 		for (CtMethod c : clazz.getDeclaredMethods())
-			result.add(c.toString());
+			result.add(c.getName());
 		return result;
 	}
 }
